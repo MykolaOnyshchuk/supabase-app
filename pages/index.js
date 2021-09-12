@@ -1,6 +1,7 @@
-import { Auth, Typography, Button } from '@supabase/ui'
-import {Input, IconPhone, IconUser, IconMap, IconMapPin} from '@supabase/ui'
+import { Auth } from '@supabase/ui'
+import Form from 'components/Form'
 import { createClient } from '@supabase/supabase-js'
+import React from "react";
 /*import { GoTrueClient } from '@supabase/gotrue-js'
 
 const GOTRUE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -29,56 +30,17 @@ const Container = (props) => {
             .match({Email: user.email})
         const {data, error} = await supabase
             .from('profiles')
-            .upsert({phone: this.inputRef.current.value,
-                first_name: document.getElementById('first-name_input').value,
-                second_name: document.getElementById('second-name_input').value,
-                country: document.getElementById('country_input').value,
-                city: document.getElementById('city_input').value,
+            .upsert({phone: Form.state.phone,
+                first_name: this.state.first_name,
+                second_name: this.state.second_name,
+                country: this.state.country,
+                city: this.state.city,
                 })
             .match({id: uuid})
     }
   if (user)
     return (
-        <>
-            <Input
-                id="phone_input"
-                label="Phone Number"
-                placeholder="+380(__)___-____"
-                icon={<IconPhone />}
-                type="tel"
-            />
-            <Input
-                id="first-name_input"
-                label="First Name"
-                placeholder="John"
-                icon={<IconUser />}
-            />
-            <Input
-                id="second-name_input"
-                label="Last Name"
-                placeholder="White"
-                icon={<IconUser />}
-            />
-            <Input
-                id="country_input"
-                label="Country"
-                placeholder="Ukraine"
-                icon={<IconMap />}
-            />
-            <Input
-                id="city_input"
-                label="City"
-                placeholder="Kyiv"
-                icon={<IconMapPin />}
-            />
-            <Button success onClick={updateProfileData1}>
-                Update
-            </Button>
-          <Typography.Text>Signed in: {user.email}</Typography.Text>
-          <Button block onClick={() => props.supabaseClient.auth.signOut()}>
-            Sign out
-          </Button>
-        </>
+        <Form />
     )
   return props.children
 }
