@@ -1,5 +1,5 @@
 import { Auth } from '@supabase/ui'
-import Form from '../components/Form'
+import Form from '../components/Form.js'
 import { createClient } from '@supabase/supabase-js'
 import React from "react";
 /*import { GoTrueClient } from '@supabase/gotrue-js'
