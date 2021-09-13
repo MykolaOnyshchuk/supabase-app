@@ -8,6 +8,9 @@ pipeline:
       - npm test
 
   publish-api-docker:
+    environment:
+      DOCKER_USERNAME = monyshchuk
+      DOCKER_EMAIL = mykolaon1@gmail.com
     image: plugins/docker:1.12
     username: ${DOCKER_USERNAME}
     password: ${DOCKER_PASSWORD}
