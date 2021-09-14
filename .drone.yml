@@ -15,6 +15,7 @@ steps:
       password:
         from_secret: DOCKER_PASSWORD
     commands:
+      - systemctl start docker
       - docker login -u $username -p $password
       - docker build . -t monyshchuk/supabase-app:${DRONE_COMMIT:0:7}
       - docker push monyshchuk/supabase-app
