@@ -5,7 +5,7 @@ steps:
   - name: "Check for errors"
     image: node:6.3.0
     commands:
-      - npm i
+      - npm install
       - npm run build
   - name: "Docker"
     image: plugins/docker
