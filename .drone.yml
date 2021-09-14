@@ -1,15 +1,13 @@
 name: "Drone configuration"
-kind: secret
+kind: pipeline
 type: docker
-pipeline:
-  - check for errors:
-    name: "Check for errors"
+steps:
+  - name: "Check for errors"
     image: node
     commands:
       - npm install
       - npm run build
-  - deploying image:
-    name: "Docker"
+  - name: "Docker"
     image: plugins/docker
     environment:
       username:
