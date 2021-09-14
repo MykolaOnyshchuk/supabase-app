@@ -1,10 +1,10 @@
 name: "Drone configuration"
-kind: "secret"
+kind: "pipeline"
 
-pipeline:
+steps:
   - check for errors:
       name: "Check for errors"
-      image: $username/supabase-app
+      image: node:6.3.0
       commands:
         - npm i
         - npm run build
