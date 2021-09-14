@@ -11,9 +11,9 @@ steps:
     image: plugins/docker
     environment:
       username:
-        from_secret: DOCKER_USERNAME
+        - from_secret: DOCKER_USERNAME
       password:
-        from_secret: DOCKER_PASSWORD
+        - from_secret: DOCKER_PASSWORD
   commands:
     - docker login -u $username -p $password
     - docker build . -t ${username}/supabase-app:${DRONE_COMMIT:0:7}
