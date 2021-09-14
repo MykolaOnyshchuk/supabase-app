@@ -13,13 +13,6 @@ const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.
 
 const Container = (props) => {
   const { user } = Auth.useUser()
-    /*constructor(props)
-    {
-        super(props);
-        this.state = {value: ''};
-
-        this.handleChange = this.handleChange.bind(this);
-    }*/
     const updateProfileData1 = () => {
         console.log(props.inputRef[0].value)
     }
