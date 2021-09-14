@@ -1,22 +1,26 @@
 name: drone_configuration
 kind: secret
-pipeline:
-  run-tests:
-    image: node:6.3.0
-    commands:
-      - cd ./api && npm i --quiet
-      - npm test
 
-  publish-api-docker:
-    environment:
-      DOCKER_USERNAME = monyshchuk
-      DOCKER_EMAIL = mykolaon1@gmail.com
-    image: plugins/docker:1.12
-    username: $DOCKER_USERNAME
-    password: $DOCKER_PASSWORD
-    email: $DOCKER_EMAIL
-    repo: monyshchuk/supabase-app
-    tags:
-      - latest
-    dockerfile: ./Dockerfile
-    context: ./
+steps:
+  check for errors:
+    name: check for errors
+      image: node:6.3.0
+      commands:
+        - npm i
+        - npm run build
+
+
+  build an image:
+    name: dщcker
+    image: plugins/docker
+      environment:
+        username:
+          from_secret: DOCKER_USERNAME
+        password:
+          from_secret: DOCKER_PASSWORD
+      tags:
+        - latest
+      dockerfile: ./Dockerfile
+      commands:
+        - docker login -u $DOCKER_USERNAME -p $REGISTRY_PASSWORD
+        - docker build . -t ${DOCKER_USERNAME}i/supabase-app:${DRONE_COMMIT:0:7}
