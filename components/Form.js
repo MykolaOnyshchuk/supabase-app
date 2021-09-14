@@ -26,7 +26,7 @@ class Form extends Component {
                 <h2>Sign up</h2>
                 <div className="form-group">
                     <label htmlFor="email">Phone Number</label>
-                    <input type="tel" className="form-control" value={this.state.phone} onChange={this.handleUserInput}
+                    <input type="number" className="form-control" value={this.state.phone} onChange={this.handleUserInput}
     name="email" />
                 </div>
                 <div className="form-group">
@@ -49,8 +49,8 @@ class Form extends Component {
                     <input type="text" className="form-control" value={this.state.city} onChange={this.handleUserInput}
                            name="city" />
                 </div>
-                <button type="submit" className="btn btn-primary">
-                    Sign up
+                <button type="submit" className="submit">
+                    Submit
                 </button>
             </form>
         )
