@@ -1,9 +1,9 @@
-name: drone_configuration
-kind: secret
+name: "Drone configuration"
+kind: "secret"
 
 pipeline:
   check for errors:
-    name: check for errors
+    name: "Check for errors"
       image: node:6.3.0
       commands:
         - npm i
@@ -11,7 +11,7 @@ pipeline:
 
 
   build an image:
-    name: docker
+    name: "Docker"
     image: plugins/docker
       environment:
         username:
