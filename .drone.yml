@@ -2,25 +2,25 @@ name: "Drone configuration"
 kind: "secret"
 
 pipeline:
-  check for errors:
-    name: "Check for errors"
-    image: node:6.3.0
-    commands:
-      - npm i
-      - npm run build
+  - check for errors:
+      name: "Check for errors"
+      image: node:6.3.0
+      commands:
+        - npm i
+        - npm run build
 
 
-  build an image:
-    name: "Docker"
-    image: plugins/docker
-    environment:
-      username:
-        from_secret: DOCKER_USERNAME
-      password:
-        from_secret: DOCKER_PASSWORD
-    tags:
-      - latest
-    dockerfile: ./Dockerfile
-    commands:
-      - docker login -u $username -p $password
-      - docker build . -t ${username}i/supabase-app:${DRONE_COMMIT:0:7}
+  - build an image:
+      name: "Docker"
+      image: plugins/docker
+      environment:
+        username:
+          from_secret: DOCKER_USERNAME
+        password:
+          from_secret: DOCKER_PASSWORD
+      tags:
+        - latest
+      dockerfile: ./Dockerfile
+      commands:
+        - docker login -u $username -p $password
+        - docker build . -t ${username}i/supabase-app:${DRONE_COMMIT:0:7}
