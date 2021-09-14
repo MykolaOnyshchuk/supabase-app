@@ -2,23 +2,19 @@ name: "Drone configuration"
 kind: "pipeline"
 
 steps:
-  - check for errors:
-      name: "Check for errors"
-      image: node:6.3.0
-      commands:
-        - npm i
-        - npm run build
-
-
-  - build an image:
-      name: "Docker"
-      image: plugins/docker
-      environment:
-        username:
-          from_secret: DOCKER_USERNAME
-        password:
-          from_secret: DOCKER_PASSWORD
+  - name: "Check for errors"
+    image: node:6.3.0
     commands:
-      - docker login -u $username -p $password
-      - docker build . -t ${username}/supabase-app:${DRONE_COMMIT:0:7}
-      - docker push ${username}/supabase-app
+      - npm i
+      - npm run build
+  - name: "Docker"
+    image: plugins/docker
+      environment:
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+  commands:
+    - docker login -u $username -p $password
+    - docker build . -t ${username}/supabase-app:${DRONE_COMMIT:0:7}
+    - docker push ${username}/supabase-app
