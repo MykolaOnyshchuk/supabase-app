@@ -4,7 +4,7 @@ kind: "secret"
 pipeline:
   - check for errors:
       name: "Check for errors"
-      image: node:14
+      image: $username/supabase-app
       commands:
         - npm i
         - npm run build
