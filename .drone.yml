@@ -18,9 +18,6 @@ steps:
           from_secret: DOCKER_USERNAME
         password:
           from_secret: DOCKER_PASSWORD
-      tags:
-        - latest
-      dockerfile: ./Dockerfile
     commands:
       - docker login -u $username -p $password
       - docker build . -t ${username}i/supabase-app:${DRONE_COMMIT:0:7}
