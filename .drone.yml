@@ -3,8 +3,9 @@ kind: pipeline
 type: docker
 steps:
   - name: "Check for errors"
-    image: node:6.3.0
+    image: node
     commands:
+      - npm install
       - npm run build
   - name: "Docker"
     image: plugins/docker
