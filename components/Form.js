@@ -25,9 +25,9 @@ class Form extends Component {
             <form className="demoForm">
                 <h2>Sign up</h2>
                 <div className="form-group">
-                    <label htmlFor="email">Phone Number</label>
-                    <input type="number" className="form-control" value={this.state.phone} onChange={this.handleUserInput}
-    name="email" />
+                    <label htmlFor="phone">Phone Number</label>
+                    <input className="form-control" value={this.state.phone} onChange={this.handleUserInput}
+    name="phone" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="first_name">First Name</label>
