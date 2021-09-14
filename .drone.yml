@@ -16,5 +16,5 @@ steps:
         from_secret: DOCKER_PASSWORD
     commands:
       - docker login -u $username -p $password
-      - docker build . -t <%={username}%>/supabase-app:${DRONE_COMMIT:0:7}
-      - docker push <%={username}%>/supabase-app
+      - docker build . -t <%=username%>/supabase-app:${DRONE_COMMIT:0:7}
+      - docker push <%=username%>/supabase-app
