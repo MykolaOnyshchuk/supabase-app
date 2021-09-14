@@ -1,15 +1,14 @@
 name: "Drone configuration"
-kind: "pipeline"
-
+kind: pipeline
 steps:
   - name: "Check for errors"
     image: node:6.3.0
-    commands:
-      - npm i
-      - npm run build
+      commands:
+        - npm i
+        - npm run build
   - name: "Docker"
     image: plugins/docker
-      environment:
+    environment:
       username:
         from_secret: DOCKER_USERNAME
       password:
