@@ -1,7 +1,7 @@
 name: drone_configuration
 kind: secret
 
-steps:
+pipeline:
   check for errors:
     name: check for errors
       image: node:6.3.0
@@ -11,7 +11,7 @@ steps:
 
 
   build an image:
-    name: dщcker
+    name: docker
     image: plugins/docker
       environment:
         username:
