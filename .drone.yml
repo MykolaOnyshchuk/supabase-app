@@ -22,5 +22,5 @@ pipeline:
         - latest
       dockerfile: ./Dockerfile
       commands:
-        - docker login -u $DOCKER_USERNAME -p $REGISTRY_PASSWORD
-        - docker build . -t ${DOCKER_USERNAME}i/supabase-app:${DRONE_COMMIT:0:7}
+        - docker login -u $username -p $password
+        - docker build . -t ${username}i/supabase-app:${DRONE_COMMIT:0:7}
