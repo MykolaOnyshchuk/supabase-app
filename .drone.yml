@@ -15,7 +15,6 @@ steps:
       password:
         from_secret: DOCKER_PASSWORD
     commands:
-      - DRONE_AGENTS_ENABLED=true
       - docker login -u $username -p $password
-      - docker build . -t monyshchuk/supabase-app:${DRONE_COMMIT:0:7}
+      - docker build . -t monyshchuk/supabase-app
       - docker push monyshchuk/supabase-app
